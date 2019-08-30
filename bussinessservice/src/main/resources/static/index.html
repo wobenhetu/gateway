@@ -46,6 +46,7 @@
     function connect() {
         var url = host + '/deng?'+'username='+$('#username').val()+'&password='+$('#password').val()+'&token='+Math.random().toString().slice(-6);
         var socket = new SockJS(url);
+        //利用Stomp.over(ws)这个方法可以使用其他类型的WebSockets。这个方法得到一个满足WebSocket定义的对象.
         stompClient = Stomp.over(socket);
         //添加客户端认证信息
         var headers = {
@@ -65,6 +66,7 @@
             stompClient.disconnect();
         }
         setConnected(false);
+        alert("Disconnected")
         console.log("Disconnected");
     }
     function send() {
