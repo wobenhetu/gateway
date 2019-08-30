@@ -1,0 +1,81 @@
+spring:
+  application:
+    name: gateway
+  redis:
+    database: 0
+    host: 192.168.61.132
+    port: 6379
+    password:
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 8
+        min-idle: 0
+    timeout: 1000
+
+
+
+  cloud:
+    gateway:
+      routes:
+        - id: bulletscreen
+          # 重点！/info必须使用http进行转发，lb代表从注册中心获取服务
+          uri: lb://bussiness-service
+          predicates:
+            # 重点！转发该路径！
+            - Path=/deng/**
+          filters:
+            - Authorize=true
+#        - id: bulletscreen1
+#          # 重点！lb:ws://代表从注册中心获取服务，并且转发协议为websocket
+#          uri: lb:ws://bussiness-service
+#          predicates:
+#            # 转发/bullet端点下的所有路径
+#            - Path=/deng/**
+
+#      routes:
+#        #        第一个业务服务
+#        - id: gateway
+#          uri: lb://bussiness-service
+#          predicates:
+#            - Path= /getbussiness/**,/getbussiness11/**
+#            - Query=username,deng
+
+
+#
+#
+##          第二个业务服务
+##        - id: gateway1
+##          uri: lb://bussiness-service2
+##          predicates:
+##            - Path= /getbussiness/**
+##            - Query=password,123
+#
+#
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true    #在eureka中，服务是以大写的形式注册的，可以转化成小写
+
+server:
+  port: 8888
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://192.168.98.109:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+
+
+# 暴露端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
