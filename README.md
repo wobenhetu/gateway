@@ -30,11 +30,11 @@ xhr-streaming、xdr-streaming、eventsource、iframe-wrap-eventsource、htmlfile
 
 **客户端：**
 
-![img](file:///F:/study/studynote/dfwmaomao@163.com/077bf37bb26a43029eb31a97d6e70301/clipboard.png)
+![img](D:\workspaces\clouddev\clipboard1.png)
 
 
 
-![img](file:///F:/study/studynote/dfwmaomao@163.com/b9715ca0bc8b44688688fa1822ca616f/clipboard.png)
+![img](D:\workspaces\clouddev\clipboard2.png)
 
 先向服务端发送 /info 接口来获取一些信息，这一步是必须的，这是 sockjs-protocol 协议规定的一步；
 
@@ -50,4 +50,4 @@ xhr-streaming、xdr-streaming、eventsource、iframe-wrap-eventsource、htmlfile
 
 **服务端：主要是.withSockJS()**
 
-![img](file:///F:/study/studynote/dfwmaomao@163.com/a3a589d49b7449329a2431489017ecc4/clipboard.png)
+![img](D:\workspaces\clouddev\clipboard3.png)
