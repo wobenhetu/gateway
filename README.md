@@ -30,11 +30,9 @@ xhr-streaming、xdr-streaming、eventsource、iframe-wrap-eventsource、htmlfile
 
 **客户端：**
 
-![img](D:\workspaces\clouddev\clipboard1.png)
+![](https://github.com/wobenhetu/gateway/blob/master/clipboard1.png)
 
-
-
-![img](D:\workspaces\clouddev\clipboard2.png)
+![](https://github.com/wobenhetu/gateway/blob/master/clipboard2.png)
 
 先向服务端发送 /info 接口来获取一些信息，这一步是必须的，这是 sockjs-protocol 协议规定的一步；
 
@@ -50,4 +48,5 @@ xhr-streaming、xdr-streaming、eventsource、iframe-wrap-eventsource、htmlfile
 
 **服务端：主要是.withSockJS()**
 
-![img](D:\workspaces\clouddev\clipboard3.png)
+![img](https://github.com/wobenhetu/gateway/blob/master/clipboard3.png)
+
