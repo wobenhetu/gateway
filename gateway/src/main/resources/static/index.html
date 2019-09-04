@@ -46,28 +46,16 @@
     function connect() {
         var url = host + '/deng?'+'username='+$('#username').val()+'&password='+$('#password').val()+'&token='+Math.random().toString().slice(-6);
         var socket = new SockJS(url);
+
         //利用Stomp.over(ws)这个方法可以使用其他类型的WebSockets。这个方法得到一个满足WebSocket定义的对象.
         stompClient = Stomp.over(socket);
-        socket.onclose = function () {
-            alert("111")
-        }
 
-        socket.onabort = function () {
-            alert("333")
-        }
-
-        socket.onerror = function () {
-            alert("222")
-        }
-
-
-        //
         // //添加客户端认证信息
-        /*var headers = {
+        var headers = {
             username:$('#username').val(),
             password:$('#password').val()
-        }*/
-        stompClient.connect({}, function(frame) {
+        }
+        stompClient.connect(headers, function(frame) {
             setConnected(true);
             console.log('Connected:' + frame);
             stompClient.subscribe('/toAll/bulletScreen', function(response) {

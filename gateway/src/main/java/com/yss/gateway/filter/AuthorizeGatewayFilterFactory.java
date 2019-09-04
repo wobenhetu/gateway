@@ -36,7 +36,6 @@ public class AuthorizeGatewayFilterFactory extends AbstractGatewayFilterFactory<
             if (!config.isEnabled()) {
                 return chain.filter(exchange);
             }
-
             String uri = exchange.getRequest().getPath().pathWithinApplication().value();
 
             ServerHttpResponse response = exchange.getResponse();
@@ -46,8 +45,10 @@ public class AuthorizeGatewayFilterFactory extends AbstractGatewayFilterFactory<
             String token = exchange.getRequest().getQueryParams().get("token").toString();
 
             Principal user = parseIdentity(token, username, password);
+            System.out.println("11111111111111111111111");
             if (user == null) {   //如果token认证失败user为null
-                response.setStatusCode(HttpStatus.UNAUTHORIZED);
+                System.out.println("22222222222222222222");
+                response.setStatusCode(HttpStatus.BAD_REQUEST);
                 return response.setComplete();
             }
 
@@ -59,10 +60,16 @@ public class AuthorizeGatewayFilterFactory extends AbstractGatewayFilterFactory<
                 }
             }
 
+
             if (!flag) {
+                System.out.println("4444444444444444444444");
+                response.setStatusCode(HttpStatus.UNAUTHORIZED);
                 return response.setComplete();
             }
+
+            System.out.println("33333333333333333333333333");
             return chain.filter(exchange);
+
         };
     }
 

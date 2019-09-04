@@ -1,18 +1,16 @@
 package com.example.demoserver.controller;
 
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+//@CrossOrigin
 @RestController
 @RequestMapping("/getbussiness")
 public class BussinessController {
 
     @GetMapping("/getinfo")
     public String getBussinessInfo(/*@RequestParam(value = "username",required = false) String username*/){
-        String returnString = "<h1>"+"中国文化博大精深！！！！"+"</h1>";
+        String returnString = "<h1>"+"hello world!!!!!!!!!!!!!!!!"+"</h1>";
         return returnString;
     }
 

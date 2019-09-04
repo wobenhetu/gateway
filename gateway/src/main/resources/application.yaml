@@ -18,15 +18,25 @@ spring:
 
   cloud:
     gateway:
+#      globalcors:
+#        corsConfigurations:
+#          '[/**]':
+#            allowedOrigins: "http://localhost:63342/"
+#            allowedMethods:
+#              - GET
+
+
+
       routes:
-        - id: bulletscreen
-          # 重点！/info必须使用http进行转发，lb代表从注册中心获取服务
-          uri: lb://bussiness-service
-          predicates:
-            # 重点！转发该路径！
-            - Path=/deng/**
-          filters:
-            - Authorize=true
+#        - id: bulletscreen
+#          # 重点！/info必须使用http进行转发，lb代表从注册中心获取服务
+#          uri: lb://bussiness-service
+#          predicates:
+#            # 重点！转发该路径！
+#            - Path=/deng/**
+#          filters:
+#            - Authorize=true
+
 #        - id: bulletscreen1
 #          # 重点！lb:ws://代表从注册中心获取服务，并且转发协议为websocket
 #          uri: lb:ws://bussiness-service
@@ -35,13 +45,12 @@ spring:
 #            - Path=/deng/**
 
 #      routes:
-#        #        第一个业务服务
-#        - id: gateway
-#          uri: lb://bussiness-service
-#          predicates:
-#            - Path= /getbussiness/**,/getbussiness11/**
+        #第一个业务服务
+        - id: gateway
+          uri: lb://bussiness-service
+          predicates:
+            - Path= /getbussiness/**,/getbussiness11/**
 #            - Query=username,deng
-
 
 #
 #
@@ -60,6 +69,9 @@ spring:
 
 server:
   port: 8888
+
+yss:
+  enablecors: true
 
 eureka:
   client:
